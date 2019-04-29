@@ -16,6 +16,7 @@ public class SimpleLoginTest extends BaseTest{
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("spree@example.com","spree123");
         assertTrue(driver.findElement(By.linkText("Logout")).isDisplayed());
+
     }
 
 //    private void login(String emaiID, String password) {

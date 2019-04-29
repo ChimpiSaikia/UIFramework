@@ -21,14 +21,14 @@ public class BaseTest{
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         System.out.println("Before Test");
+        driver.navigate().to("https://spree-vapasi.herokuapp.com");
 
     }
     @AfterMethod(alwaysRun=true)
     public void tearDown() {
         System.out.println("In tear down");
-        System.out.println("After Test");
-        driver.close();
-        driver.quit();
+       // driver.close();
+        //driver.quit();
     }
 
 

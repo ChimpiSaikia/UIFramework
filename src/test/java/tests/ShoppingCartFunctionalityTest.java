@@ -1,12 +1,8 @@
 package tests;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import pages.ProductListingPage;
-import pages.ShoppingCartPage;
-
-import java.util.List;
+import pages.*;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -14,40 +10,35 @@ import static org.testng.Assert.assertTrue;
 public class ShoppingCartFunctionalityTest extends BaseTest {
 
     @Test
-    public void testAddItemsToCart() throws InterruptedException {
+    public void testAddItemsToCart()  {
 
         String aProduct = "Ruby on Rails Bag";
-        ProductListingPage productListingPage =new ProductListingPage(driver);
-        productListingPage.addProductToCart();
-        Boolean display = driver.findElement(By.linkText(aProduct)).isDisplayed();
-        assertTrue(display);
 
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+
+        ProductDetailsPage productDetailsPage = new ProductDetailsPage(driver);
+       
+        ShoppingCartPage shoppingCartPage = loginPage.login("spree@example.com","spree123")
+               .addProductToCart("Bags");
+
+//  //    CheckOutPage checkOutPage1 = shoppingCartPage.checkOutItems();
+    //    CheckOutPage checkOutPage = loginPage.login("spree@example.com","spree123").addProductToCart("Bags").checkOutItems();
+
+        assertTrue(productDetailsPage.ProductDisplay(aProduct));
+
         Boolean shoppingCart = shoppingCartPage.checkShoppingCartPageDisplayed();
         assertTrue(shoppingCart);
 
         int rows = shoppingCartPage.quantityOfProduct();
+        System.out.println("Row" +rows);
         assertEquals(1, rows);
 
         Boolean nameDisplayed = shoppingCartPage.checkProductName(aProduct);
         assertTrue(nameDisplayed);
+
     }
 
 
-
-//    public void IsProductInCart() {
-//        List<WebElement> element = driver.findElement(By.id("cart-detail")).findElements(By.className("line-item"));
-//        int rows = element.size();
-//        assertEquals(1, rows);
-//        String name = element.get(0).getText();
-//        System.out.println(name);
-//        Boolean nameDisplayed = name.contains("Ruby on Rails Bag");
-//        assertTrue(nameDisplayed);
-
-//        for (Iterator<WebElement> productIterator = element.iterator(); productIterator.hasNext(); ) {
-//            WebElement next = productIterator.next();
-//            System.out.println("Products " + next.getText());
-//        }
     }
 
 

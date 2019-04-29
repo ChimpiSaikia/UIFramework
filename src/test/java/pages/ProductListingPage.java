@@ -11,11 +11,15 @@ public class ProductListingPage {
         this.driver = driver;
     }
 
-    public void addProductToCart(){
-        driver.navigate().to("https://spree-vapasi.herokuapp.com");
-        driver.findElement(By.linkText("Bags")).click();
+    public ShoppingCartPage addProductToCart(String bags) {
+        driver.findElement(By.linkText(bags)).click();
         driver.findElement(By.linkText("Ruby on Rails Bag")).click();
         driver.findElement(By.id("add-to-cart-button")).click();
+        System.out.println("correct");
+        return new ShoppingCartPage(driver);
 
     }
+
+
+
 }

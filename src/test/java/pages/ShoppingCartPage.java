@@ -31,10 +31,21 @@ public class ShoppingCartPage {
         return name.contains(aProduct);
     }
 
+
     public boolean checkShoppingCartPageDisplayed(){
         Boolean shoppingCart = driver.findElement(By.xpath("//h1[contains(text(),'Shopping Cart')]")).isDisplayed();
         return shoppingCart;
 
     }
+
+    public CheckOutPage checkOutItems(){
+        driver.findElement(By.id("checkout-link")).click();
+        return new CheckOutPage(driver);
+    }
+
+
+//    public boolean deleteProductFromCart(){
+//        driver.findElement(By.className("cart-item-delete")).click();
+//    }
 }
 
