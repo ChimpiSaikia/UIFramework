@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest{
 
     WebDriver driver;
-    @BeforeMethod
+    @BeforeMethod(alwaysRun=true)
     public void setUp(){
 
         String currentUsersWorkingDir = System.getProperty("user.dir");
@@ -23,7 +23,7 @@ public class BaseTest{
         System.out.println("Before Test");
 
     }
-    @AfterMethod
+    @AfterMethod(alwaysRun=true)
     public void tearDown() {
         System.out.println("In tear down");
         System.out.println("After Test");
