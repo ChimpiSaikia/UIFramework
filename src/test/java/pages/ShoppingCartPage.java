@@ -23,12 +23,18 @@ public class ShoppingCartPage {
         return rows;
     }
 
-    public boolean checkProductName(String aProduct){
+    public boolean checkProductName(String product){
         List<WebElement> element = driver.findElement(By.id("cart-detail")).findElements(By.className("line-item"));
-        String name = element.get(0).getText();
-        System.out.println(name);
-        //Boolean nameDisplayed = name.contains(aProduct);
-        return name.contains(aProduct);
+        String name;
+        if (product == "Ruby on Rails Bag") {
+            name = element.get(0).getText();
+            System.out.println(name);
+        }
+        else{
+            name = element.get(1).getText();
+        }
+        return name.contains(product);
+
     }
 
 
