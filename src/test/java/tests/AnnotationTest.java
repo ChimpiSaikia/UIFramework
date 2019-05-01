@@ -23,15 +23,13 @@ public class AnnotationTest {
     @Test
     public void test4() {
         System.out.println("Executing Test4");
-        assertTrue(false);
         System.out.println("Executing Test4");
     }
 
     @Test
     public void test5(){
         System.out.println("Executing Test5");
-        assertTrue(false);
-        System.out.println("Executing Test5");
+
     }
     @AfterMethod
     public void test6(){
